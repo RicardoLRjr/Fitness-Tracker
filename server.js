@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const db = require("./models/workout")
 const PORT = process.env.PORT || 3000;
+var path = require("path");
 const app = express();
 
 mongoose.connect(
@@ -18,10 +19,10 @@ app.get('/', function (req, res) {
     res.send("test")
   })
   app.get('/exercise', function (req, res) {
-    res.send("test")
+    res.sendFile(path.join(__dirname, "public/exercise.html"));
   })
   app.get('/stats', function (req, res) {
-    res.send("test")
+    res.sendFile(path.join(__dirname, "public/stats.html"));
   })
 
 
