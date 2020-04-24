@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 var path = require("path");
 const app = express();
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/workouts",
+  process.env.MONGODB_URI || "mongodb://localhost/workout",
   { useNewUrlParser: true }
 );
 app.use(express.urlencoded({ extended: true }));
@@ -24,8 +24,8 @@ app.get('/', function (req, res) {
 // API Routes:
 app.get("/api/workouts", (req, res) => {
     db.find({})
-    .then(workout => {
-        res.json(workout);
+    .then(workouts => {
+        res.json(workouts);
     }).catch(err => {
         res.json(err);
     });
@@ -36,14 +36,14 @@ app.post("/api/workouts", (req, res) => {
 });
 app.get("/api/workouts/range", (req, res) => {
     db.find({}).limit(10)
-    .then(workout => {
+    .then(workouts => {
         res.json(err);
     });
 });
 app.put("/api/workouts/:id", (req, res) => {
     db.findByIdAndUpdate(req.params.id, {
-    }).then(workout => {
-        res.json(workout);
+    }).then(workouts => {
+        res.json(workouts);
     }).catch(err => {
         res.json(err);
     });

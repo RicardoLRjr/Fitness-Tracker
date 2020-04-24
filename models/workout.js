@@ -25,6 +25,5 @@ const WorkoutSchema = new Schema ({
 WorkoutSchema.virtual('combinedWeight').get(function () {
     return this.weight*this.reps*this.sets
 })
-
 const Workout = mongoose.model("Workout", WorkoutSchema)
 module.exports = Workout;
