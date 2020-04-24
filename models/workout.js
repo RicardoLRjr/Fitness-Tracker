@@ -1,8 +1,7 @@
 const mongoose = require("mongoose")
-
 const Schema = mongoose.Schema
-
-const workoutSchema = new Schema ({
+const opts = { toJSON: { virtuals: true } };
+const WorkoutSchema = new Schema ({
     dayName: {
         type: String
     },
@@ -13,14 +12,19 @@ const workoutSchema = new Schema ({
             {
                 type: {type: String},
                 name: {type: String},
-                duration: {type: String},
-                weight: {type: String},
-                reps: {type: String},
-                sets: {type: String},
-                // Validation to ensure number here?
-                distance: {type: String}
+                duration: {type: Number},
+                weight: {type: Number},
+                reps: {type: Number},
+                sets: {type: Number},
+                distance: {type: Number}
               }
             ]
 
 })
-module.exports = workoutSchema;
+
+WorkoutSchema.virtual('combinedWeight').get(function () {
+    return this.weight*this.reps*this.sets
+})
+
+const Workout = mongoose.model("Workout", WorkoutSchema)
+module.exports = Workout;
