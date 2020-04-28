@@ -1,16 +1,18 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+// Testing to see if I could separate exercise model from workout model
 
-const exerciseSchema = new Schema (
+// const mongoose = require("mongoose")
+// const Schema = mongoose.Schema
 
-{
-    type:{
-        type: String
-    },
-    name: {type: String},
-    duration: {type: String},
-    weight: {type: String},
-    reps: {type: String},
-    sets: {type: String},
-    // Validation to ensure number here?
-  })
+// const exerciseSchema = new Schema (
+
+// {
+//     type:{
+//         type: String
+//     },
+//     name: {type: String},
+//     duration: {type: String},
+//     weight: {type: String},
+//     reps: {type: String},
+//     sets: {type: String},
+//     // Validation to ensure number here?
+//   })

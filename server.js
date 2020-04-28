@@ -4,11 +4,9 @@ const mongoose = require("mongoose");
 const db = require("./models/workout")
 const PORT = process.env.PORT || 3000;
 var path = require("path");
+var MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/workout"
 const app = express();
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/workout",
-  { useNewUrlParser: true }
-);
+mongoose.connect(MONGODB_URI);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
